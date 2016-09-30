@@ -7,12 +7,16 @@
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <DockPanel>
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <mah:DropDownButton DockPanel.Dock="Top" Content="Show Entity..."
                             ItemsSource="{Binding Stuff, UpdateSourceTrigger=PropertyChanged}"
-                            DisplayMemberPath="Name">
+                            DisplayMemberPath="Name" >
             <mah:DropDownButton.ItemContainerStyle>
-                <Style TargetType="MenuItem">
+                <Style TargetType="MenuItem" BasedOn="{StaticResource MetroMenuItem}">
                     <Setter Property="Command" 
                             Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type mah:DropDownButton}},Path=DataContext.ShowEntityCommand}"/>
                     <Setter Property="CommandParameter" Value="{Binding}"/>
@@ -20,8 +24,8 @@
             </mah:DropDownButton.ItemContainerStyle>
         </mah:DropDownButton>
         
-        <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
+        <StackPanel Orientation="Vertical" DockPanel.Dock="Top" Grid.Row="1">
             <Button Command="{Binding AddEntityCommand}">Add Item to Backing Collection</Button>
         </StackPanel>
-    </DockPanel>
+    </Grid>
 </Window>
