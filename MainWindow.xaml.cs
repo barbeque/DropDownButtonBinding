@@ -23,6 +23,8 @@ namespace DropDownButtonBindingBug
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = new MainWindowViewModel();
         }
     }
 }
